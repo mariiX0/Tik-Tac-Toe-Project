@@ -1,18 +1,27 @@
-name: Demo YAML file
-
-on:
-  push:
-    branches:
-      - main
+name: demo .YAML 
+on: [push]  
 permissions:
-  pages: read-write
+  contents: read
+  id-token: write
 jobs:
-  demo:
+  demo-yaml:
     runs-on: ubuntu-latest
     steps:
-     - name: HTML Preview
-       id: html_preview
-       uses: pavi2410/html-preview-action@v4
-       with:
-         html_file: 'index.html'
-         job_summary: true
+      - name: Checkout repository
+        uses: actions/checkout@v3 
+      - name: Display message
+        run: echo "This is a demo .YAML file for GitHub Actions."
+      - name: List files in repository
+        run: ls -la
+      - name: Show current date and time
+        run: date
+      - name: Print working directory
+        run: pwd
+      - name: Display GitHub context
+        run: echo "${{ toJson(github) }}" 
+      - name: Show runner environment variables
+        run: printenv
+      - name: End of demo
+        run: echo "Demo workflow completed."  
+
+      
