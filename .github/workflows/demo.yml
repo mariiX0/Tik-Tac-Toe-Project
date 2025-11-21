@@ -5,17 +5,14 @@ on:
     branches:
       - main
 permissions:
-  pages: read
+  pages: read-write
 jobs:
   demo_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
+     - name: HTML Preview
+       id: html_preview
+       uses: pavi2410/html-preview-action@v4
+       with:
+         html_file: 'index.html'
+         job_summary: true
